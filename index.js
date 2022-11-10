@@ -96,10 +96,7 @@ async function run() {
         app.post('/reviews', async (req, res) => {
             const review = req.body;
             const result = await reviewCollection.insertOne(review);
-            const time = new Date().getTime();
-            const dateTime = await reviewCollection.insertOne(time);
-            console.log(dateTime);
-            res.send(result, dateTime);
+            res.send(result);
         })
 
         app.put('/myreviews/:id', verifyJWT, async (req, res) => {
